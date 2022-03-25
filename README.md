@@ -1,6 +1,8 @@
 # Программирование второй семестр C++
-## [Лабораторная работа№1]()
-
+## [Лабораторная работа№1](Lab1/lab№1.pdf)
+* [Main.cpp](Lab1/main.cpp)
+* [Fun.cpp](Lab1/fun.cpp)
+* [Fun.h](Lab1/fun.h)
 ## [Лабораторная работа№2](Lab2/lab№2.pdf)
 * [Main.cpp](Lab2/labprog.cpp)
 * [Fun.cpp](Lab2/fun.cpp)
