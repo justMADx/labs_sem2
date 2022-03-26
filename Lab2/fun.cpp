@@ -5,11 +5,34 @@
 #include "fun.h"
 using namespace std;
 namespace stringanalizer {
+    vector<string> analyzer::split() {
+        if (s == "\0") {
+            cerr << "Error. Nothing exists" << '\n';
+            return {};
+        }
+        else {
+            size_t pos_start = 0, pos_end;//delim_len = delimiter.length();
+            string token;
+            int i = 0;
+            string copy = delimiter;
+            for (int i = 0; i < amount + 1; i++) {
+                while ((pos_end = s.find(delimiter[i], pos_start)) != string::npos) {
+                    token = s.substr(pos_start, pos_end - pos_start);
+                    subs.push_back(token);
+                    pos_start = pos_end + 1;
+                }
+            }
+            delimiter = copy;
+            subs.push_back(s.substr(pos_start));
+            cout << "Separated" << "\n";
+            return subs;
+        }
+    }
     analyzer::analyzer() {
         s = "";
         sub_n = 0;
     }
-analyzer::analyzer(string stroka) {
+analyzer::analyzer(const string& stroka) {
      s = stroka;
     sub_n = 0;
 }
@@ -18,40 +41,21 @@ void stringanalizer::analyzer::get_string() {
     cin >> stroka;
     s = stroka;
     str = s;
-    subs={};
+    subs.clear();
     subs.push_back(s);
-
-}
-vector<string> analyzer::split() {
-    if (s == "\0") {
-        cerr << "Error. Nothing exists" << '\n';
-    }
-    else{
-        size_t pos_start = 0, pos_end, delim_len = delimiter.length();
-        string token;
-        vector<string> res;
-
-        while ((pos_end = s.find(delimiter, pos_start)) != string::npos) {
-            token = s.substr(pos_start, pos_end - pos_start);
-            pos_start = pos_end + delim_len;
-            res.push_back(token);
-        }
-        res.push_back(s.substr(pos_start));
-        subs = res;
-        cout << "Separated"<<"\n";
-        return subs;
-        }
+    split();
 }
 void analyzer::get_sep() {
     char sep;
-    int amount;
     cout << "Amount of delimiters? . .";
     cin >> amount;
-    for (int i = 0; i < amount; i++) {
+    delimiter.clear();
+    delimiter.resize(amount);
+    for (int i = 0; i != amount; i++) {
         cin >> sep;
-        delimiter.push_back(sep);
-    }
-
+       delimiter[i] = sep;
+     }
+    split();
 }
 
 void analyzer::add_delimiter() {
@@ -77,10 +81,10 @@ void analyzer::add_delimiter() {
 }
     void analyzer::get_all_substrings()
     {
-        if (s == "\0") {
-            cerr << "Error. Nothing exists" << '\n';
-        }
-        else {
+        if (subs.empty()) {
+             cout << s << '\n';
+         }
+        else{
             for (int i = 0; i < subs.size(); i++)
                 cout << subs[i] << '\n';
         }
@@ -119,16 +123,18 @@ void analyzer::add_delimiter() {
             }
         }
     }
-    void stringanalizer::analyzer::delete_all_delimiters() {
+    string stringanalizer::analyzer::delete_all_delimiters() {
 
-        size_t position = str.find_first_of(delimiter);
+        size_t position = s.find_first_of(delimiter);
         while (position != string::npos)
         {
-            str.erase(str.begin() + position);
-            position = str.find_first_of(delimiter);
+            s.erase(s.begin() + position);
+            position = s.find_first_of(delimiter);
         }
-        s = str;
+        subs.clear();
+        subs.push_back(s);
         cout << "All delimiters deleted" << '\n';
+        return s;
     }
  
 

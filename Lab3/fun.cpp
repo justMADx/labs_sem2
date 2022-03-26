@@ -30,7 +30,7 @@ namespace fun {
 	}
 	 bool fun::operator!=(Triangle a, Triangle b)
 	 {
-		 return a.square != b.square;
+		 return !(a == b);
 	 }
 	 bool fun::operator>(Triangle a, Triangle b)
 	 {
@@ -58,7 +58,6 @@ namespace fun {
 			x = q.q.front();
 			cout << q.q.front() << "\nPopped from queue\n";
 			q.q.erase(q.q.begin());
-			return q;
 		}
 		else cout << "Queue is empty\n";
 		return q;

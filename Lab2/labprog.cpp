@@ -8,14 +8,14 @@ int main()
 {
     char command;
     string stroka;
+    cout << "Put your string\n";
     cin >> stroka;
     stringanalizer::analyzer az = stringanalizer::analyzer(stroka);
-    cout << "Choose the variant: " << '\n' <<"0.Set seps(default '-')."<<'\n'<<"*. Add delimiters every two letters."<<'\n' << "    1.Set a string." << '\n' << "   2.Separate a string" << '\n';
-    cout << "   3.Get all substrings" << '\n' << "  4. Get next substring." << '\n' << "    5.Get previous substring." << '\n' << "     6. To delete all delimiters." << '\n' << "          Put 7 to quit..." << '\n';
+    cout << "Choose the variant: " << '\n' <<"\t0.Set seps(default '-')."<<'\n'<<"\t*.Add delimiters every two letters."<<'\n' << "\t1.Set a string." << '\n';
+    cout << "\t3.Get all substrings" << '\n' << "\t4. Get next substring." << '\n' << "\t5.Get previous substring." << '\n' << "\t6. To delete all delimiters." << '\n' << "\t\tPut 'q' to quit..." << '\n';
  
    while (cin >> command) {
-  
-        switch (command) {
+          switch (command) {
         case'*':
             az.add_delimiter();
             break;
@@ -24,9 +24,6 @@ int main()
             break;
         case'1':
             az.get_string();
-                break;
-        case'2':
-            az.split();
             break;
         case'3':
             az.get_all_substrings();
@@ -40,7 +37,7 @@ int main()
         case'6':
             az.delete_all_delimiters();
             break;
-        case'7':
+        case'q':
             cout << "Bye-bye" << '\n';
             exit(0);
             break;
