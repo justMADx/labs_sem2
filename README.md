@@ -10,4 +10,4 @@
 ## [Лабораторная работа№3](Lab3/lab№3.pdf)
 * [Main.cpp](Lab3/lab_prog_3.cpp)
 * [Fun.cpp](Lab3/fun.cpp)
-* [Fun.h](Lab3/fun.cpp)
+* [Fun.h](Lab3/fun.h)
