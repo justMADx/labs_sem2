@@ -3,22 +3,20 @@
 using namespace std;
 namespace fun{
 	template<class Iter, class Predicate>
-	bool any_of(Iter first,const Iter&last, const Predicate& value) {
-		bool flag = false;
+	bool any_of(Iter first,const Iter&last, Predicate func) {
 		while (first != last) {
-			if (*first == value) {
-				flag = true;
-				break;
+			if (func(*first)) {
+				return true;
 			}
 			++first;
 		}
-		return flag;
+		return false;
 	};
 	
 	template<typename iterator, class Predicate>
 	bool one_of(const iterator& begin,
 		const iterator& end,
-		const Predicate& p) {
+		Predicate p) {
 			int counter = 0;
 		for (iterator it = begin; it != end; it++) {
 			if ((p(*it))) {
