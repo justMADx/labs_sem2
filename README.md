@@ -15,7 +15,7 @@
 * [Main.cpp](Lab4/lab_4.cpp)
 * [Fun.cpp](Lab4/fun.cpp)
 * [Fun.h](Lab4/fun.h)
-## [Лабораторная работа№5](Lab4/lab№5.pdf)
+## [Лабораторная работа№5](Lab5/lab№5.pdf)
 * [Main.cpp](Lab5/lab_prog_5.cpp)
 * [Fun.cpp](Lab5/fun.cpp)
 * [Fun.h](Lab5/fun.h)
